@@ -1,7 +1,7 @@
 {
   "name": "prose-guard",
-  "version": "0.1.0",
-  "description": "Enforces direct, low-noise prose in Claude Code output.",
+  "version": "0.2.0",
+  "description": "Detects distracting prose patterns and uses a Stop hook to request one clean rewrite.",
   "author": {
     "name": "Matthew Stevens Cain"
   }
