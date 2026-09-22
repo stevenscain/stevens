@@ -1,25 +1,9 @@
+---
+name: prose-guard
+description: Write direct, low-noise prose. Avoid throat clearing, fake contrast, rhetorical filler, and unnecessary hedging.
+---
+
 # prose-guard
-
-`prose-guard` is a reusable style-control skill for agent output.
-
-Its goal is to preserve meaning while removing common forms of distracting model prose.
-
-## Targets
-
-Detect and reduce:
-
-- conversational throat clearing
-- self-referential honesty or directness claims
-- unnecessary hedging
-- fake or inflated contrast
-- rhetorical setup and reveal patterns
-- repeated conclusions
-- decorative transitions
-- unnecessary reassurance
-- inflated adjectives and adverbs
-- abstract phrasing where a direct verb is clearer
-
-## Core rules
 
 Use plain, direct English.
 
@@ -47,7 +31,7 @@ Do not add motivational, reassuring, or emotional framing unless requested.
 Do not use decorative language.
 Do not use metaphors unless they clarify a technical concept.
 
-## Common patterns to flag
+## Common patterns to avoid
 
 - "Let me be honest"
 - "Honestly"
@@ -67,20 +51,17 @@ Do not use metaphors unless they clarify a technical concept.
 - "It's important to note"
 - "Keep in mind"
 - "Bear in mind"
-- "In other words"
 - "Put differently"
 - "Not X, but Y"
 - "It's not about X. It's about Y."
-- "Rather than X, think of it as Y."
 - "This isn't just X. It's Y."
 
 ## Hedge words to review
 
-Use only when they change factual meaning:
+Use these only when they change factual meaning:
 
 - generally
 - typically
-- often
 - usually
 - likely
 - probably
@@ -114,25 +95,4 @@ Over:
 
 > Here's where things get interesting. There are actually two very different problems hiding underneath this.
 
-## Enforcement model
-
-Use this skill as the specification layer.
-
-Use the plugin Stop hook as the enforcement layer.
-
-Recommended flow:
-
-```text
-agent output
-    ↓
-prose-guard check
-    ↓
-pass → return output
-fail → return exact violations
-    ↓
-agent rewrites
-    ↓
-prose-guard check
-```
-
-Limit rewrite attempts to avoid loops.
+The plugin Stop hook enforces a deterministic subset of these rules. Preserve meaning when rewriting flagged prose.
