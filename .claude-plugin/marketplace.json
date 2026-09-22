@@ -1,0 +1,13 @@
+{
+  "name": "stevens",
+  "owner": {
+    "name": "Matthew Stevens Cain"
+  },
+  "plugins": [
+    {
+      "name": "prose-guard",
+      "source": "./plugins/prose-guard",
+      "description": "Enforces direct, low-noise prose in Claude Code output."
+    }
+  ]
+}
