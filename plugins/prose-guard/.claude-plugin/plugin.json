@@ -1,0 +1,8 @@
+{
+  "name": "prose-guard",
+  "version": "0.1.0",
+  "description": "Enforces direct, low-noise prose in Claude Code output.",
+  "author": {
+    "name": "Matthew Stevens Cain"
+  }
+}
