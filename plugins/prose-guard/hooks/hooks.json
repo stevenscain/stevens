@@ -1,0 +1,17 @@
+{
+  "description": "Checks Claude's final response for distracting prose patterns and requests one rewrite when needed.",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/prose-guard.mjs"],
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
