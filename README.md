@@ -1,36 +1,44 @@
 # Stevens
 
-A personal collection of Claude Code plugins, skills, hooks, prompts, and eval helpers.
+A personal collection of reusable Claude Code plugins, agent skills, hooks, prompts, and eval helpers.
 
-## Plugin marketplace
+## Marketplace
 
-Add this repository as a Claude Code marketplace, then install individual plugins from it.
+Add this repository to Claude Code:
 
 ```text
 /plugin marketplace add stevenscain/stevens
-/plugin install prose-guard@stevens
 ```
+
+Then install a plugin from the collection.
 
 ## Plugins
 
 ### prose-guard
 
-`prose-guard` reduces distracting model prose while preserving meaning.
+A deterministic prose linter for Claude Code output.
 
-It targets hedging, throat clearing, fake contrast, rhetorical framing, repeated conclusions, and similar output patterns.
+It detects common low-signal patterns such as throat clearing, self-referential honesty claims, fake contrast, rhetorical reveals, decorative transitions, and clusters of unnecessary hedge words.
 
-Current structure:
+Install it with:
 
 ```text
-.claude-plugin/
-  marketplace.json
-plugins/
-  prose-guard/
-    .claude-plugin/
-      plugin.json
-    skills/
-      prose-guard/
-        SKILL.md
+/plugin install prose-guard
 ```
 
-The Stop hook and linter implementation will live inside the `prose-guard` plugin.
+The plugin includes:
+
+```text
+plugins/prose-guard/
+  .claude-plugin/
+    plugin.json
+  hooks/
+    hooks.json
+  scripts/
+    prose-guard.mjs
+  skills/
+    prose-guard/
+      SKILL.md
+```
+
+The skill defines the writing rules. The Stop hook checks the final response and requests one rewrite when the violation score reaches the threshold.
